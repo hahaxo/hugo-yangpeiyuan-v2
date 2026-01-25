@@ -1,0 +1,23 @@
+{{ define "header" }}
+<nav class="back-bar">
+  <div class="page-container py-14">
+    <a href="{{ "/" | relURL }}" class="bg-stone-200/60 px-6 py-2 rounded-3xl text-gray-500 hover:bg-stone-200 transition cursor-pointer">←</a>
+  </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<div class="page-container space-y-8">
+  <section>
+    <div class="text-2xl font-bold mb-4">{{ .Title }}</div>
+    <ul class="space-y-4 text-gray-700">
+      {{ range .Pages }}
+      <li class="flex gap-4 items-start">
+        <p class="text-gray-400 font-mono shrink-0">{{ .Date.Format "01/02" }}</p>
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+</div>
+{{ end }}

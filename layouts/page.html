@@ -1,0 +1,35 @@
+{{ define "header" }}
+<nav class="back-bar">
+  <div class="page-container py-14">
+    <a href="{{ "/" | relURL }}" class="bg-stone-200/60 px-6 py-2 rounded-3xl text-gray-500 hover:bg-stone-200 transition cursor-pointer">←</a>
+  </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<div class="page-container">
+  <article>
+  <header>
+  <h1 class="text-4xl/14 font-bold mb-1">{{ .Title }}</h1>
+  <div class="text-sm text-gray-400 flex gap-6">
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+    <div class="tags flex gap-4">
+       {{ range .GetTerms "tags" }}
+    <a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+    </div>
+  </div>
+</header>
+
+<div class="prose prose-pre:not-prose prose-code:not-prose my-14 text-lg/8 break-all">{{ .Content }}</div>
+</article>
+</div>
+
+
+{{ end }}
+
+
+
+
+

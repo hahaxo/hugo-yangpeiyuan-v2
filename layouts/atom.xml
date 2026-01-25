@@ -1,0 +1,28 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" | safeHTML }}
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections | first 20 }}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ .Site.Title | html }}</title>
+  {{ with .Site.Params.description }}
+  <subtitle>{{ . | html }}</subtitle>
+  {{ end }}
+  <link href="{{ .Site.BaseURL }}" />
+  <link href="{{ .Permalink }}" rel="self" type="application/atom+xml"/>
+  <id>{{ .Site.BaseURL }}</id>
+
+  {{ if gt (len $pages) 0 }}
+  <updated>{{ (index $pages 0).Date.Format "2006-01-02T15:04:05Z07:00" }}</updated>
+  {{ end }}
+
+  {{ range $pages }}
+  <entry>
+    <title>{{ .Title | html }}</title>
+    <link href="{{ .Permalink }}" />
+    <id>{{ .Permalink }}</id>
+    <updated>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</updated>
+    <summary>{{ .Summary | plainify | html }}</summary>
+  <content type="html">
+{{ .Content | safeHTML | replaceRE "<img([^>]*)>" "<img$1 />" }}
+  </content>
+  </entry>
+  {{ end }}
+</feed>

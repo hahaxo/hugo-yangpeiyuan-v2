@@ -1,0 +1,19 @@
+name = "hugo-yangpeiyuan-v2"
+min_version = "0.154.5"
+license = "MIT"
+description = "A fast, minimalist and responsive hugo theme for bloggers."
+
+# The home page of the theme, where the source can be found.
+homepage = "https://github.com/hahaxo/hugo-yangpeiyuan-v2/"
+
+# If you have a running demo of the theme.
+demosite = "https://blog.yangpeiyuan.com/"
+
+tags = ["blog", "simple", "responsive", "minimalist", "fast"]
+features = ["minimalist", "responsive", "blog"]
+
+# If the theme has a single author
+[author]
+    name = "yangpeiyuan"
+    homepage = "https://yangpeiyuan.com"
+

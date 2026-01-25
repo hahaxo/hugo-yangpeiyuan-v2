@@ -1,0 +1,21 @@
+{{ define "header" }}
+<header>{{ partial "header.html" . }}</header>
+{{ end }} 
+
+{{ define "main" }}
+<div class="page-container space-y-8">
+  {{ range .Site.RegularPages.ByDate.Reverse.GroupByDate "2006" }}
+  <section>
+    <div class="text-2xl font-bold mb-4">{{ .Key }}</div>
+    <ul class="space-y-4 text-gray-700">
+      {{ range .Pages }}
+      <li class="flex gap-4 items-start">
+        <p class="text-gray-400 font-mono shrink-0">{{ .Date.Format "01/02" }}</p>
+        <a class="text-inherit" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}
