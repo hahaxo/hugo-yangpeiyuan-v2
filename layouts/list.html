@@ -8,16 +8,26 @@
 
 {{ define "main" }}
 <div class="page-container space-y-8">
-  <section>
-    <div class="text-2xl font-bold mb-4">{{ .Title }}</div>
-    <ul class="space-y-4 text-gray-700">
-      {{ range .Pages }}
-      <li class="flex gap-4 items-start">
-        <p class="text-gray-400 font-mono shrink-0">{{ .Date.Format "01/02" }}</p>
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-      </li>
-      {{ end }}
-    </ul>
+  {{ if .Content }}
+  <section class="prose max-w-none">
+  {{ .Content }}
   </section>
+  {{ end }}
+
+{{ if .Pages }}
+<section>
+  <div class="text-2xl font-bold mb-4">{{ .Title }}</div>
+  <ul class="space-y-4 text-gray-700">
+    {{ range .Pages }}
+    <li class="flex gap-4 items-start">
+      <p class="text-gray-400 font-mono shrink-0">
+        {{ .Date.Format "01/02" }}
+      </p>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
 </div>
 {{ end }}

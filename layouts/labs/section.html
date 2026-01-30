@@ -1,0 +1,35 @@
+{{ define "header" }}
+<nav class="back-bar">
+  <div class="page-container py-14">
+    <a href="{{ " /" | relURL }}" class="bg-stone-200/60 px-6 py-2 rounded-3xl text-gray-500 hover:bg-stone-200 transition cursor-pointer">←</a>
+  </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<div class="page-container space-y-8">
+  {{ if .Content }}
+  <div class="text-2xl font-bold mb-4">{{ .Title }}</div>
+  <section class="prose max-w-none">
+    {{ .Content }}
+  </section>
+  {{ end }}
+
+  <!-- list -->
+  <div class="flex gap-8 flex-wrap">
+    <div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-400 transition">
+      <a href="https://appd.top" target="_blank"><img src="https://static.appd.top/blog/20260130morning_appd_top.webp" alt="">
+      <p class="p-4  text-gray-500 text-sm">2024：全文输出的科技早报 RSS Feed</p>
+      </a>
+    </div>
+    
+    <div class="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-400 transition">
+      <a href="#"><img src="https://static.appd.top/blog/20260130morning_appd_top.webp" alt="">
+        <p class="p-4  text-gray-500 text-sm">全文输出的科技早报 RSS Feed</p>
+      </a>
+    </div>
+  </div>
+
+
+</div>
+{{ end }}
