@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-<profile-header></profile-header>
+
+<head> {{ partial "head.html" . }} </head>
 
 <body class="bg-thread-body">
-  <div class="min-h-dvh flex flex-col"> {{ block "header" . }}{{ end }} <main class="flex-1">{{ block "main" . }}{{ end }}</main>
+  <div class="min-h-dvh flex flex-col">
+    <profile-header></profile-header>
+    <main class="flex-1">{{ block "main" . }}{{ end }}</main>
     <footer>{{ partial "footer.html" . }}</footer>
   </div>
 </body>
