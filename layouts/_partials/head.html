@@ -12,5 +12,4 @@
   title="{{ .Site.Title }} Atom Feed"
   href="{{ "atom.xml" | absURL }}">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script type="module" src="https://yangpeiyuan.com/assets/js/profile-header.js"></script>
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title> {{ partialCached "head/css.html" . }} {{ partialCached "head/js.html" . }}
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>{{ partialCached "head/css.html" . }}

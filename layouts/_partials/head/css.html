@@ -1,7 +1,4 @@
-{{- with resources.Get "css/main.css" | postCSS | minify | fingerprint }} {{- if hugo.IsDevelopment }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" />
-{{- else }} {{- with . | minify | fingerprint }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
-{{- end }} {{- end }} {{- end }}
-{{ $chromaStyle := resources.Get "css/chroma.css" | resources.Minify }}
-<link rel="stylesheet" href="{{ $chromaStyle.Permalink }}">
+{{- with resources.Get "css/style.css" | minify | fingerprint }} {{- if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" /> {{- else }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" /> {{- end }} {{- end }} {{ $chromaStyle := resources.Get "css/chroma.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $chromaStyle.RelPermalink }}" integrity="{{ $chromaStyle.Data.Integrity }}" crossorigin="anonymous">
